@@ -1,0 +1,9 @@
+<imx-icon-tile caption="Sample Identity" image="userremove" [subtitle]="description">
+    <ng-template #ActionTemplate>
+      <button mat-button color="primary" (click)="getuser()">
+        <span>{{ '#LDS#GetUser' | translate }}</span>
+        &nbsp;
+        <eui-icon size="m" icon="forward"></eui-icon>
+      </button>
+    </ng-template>
+  </imx-icon-tile>

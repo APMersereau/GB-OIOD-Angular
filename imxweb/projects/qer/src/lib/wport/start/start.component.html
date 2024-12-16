@@ -122,6 +122,23 @@
     </imx-icon-tile>
 
     <imx-icon-tile
+      data-imx-identifier="start-tile-get-user"
+      [caption]="'#LDS#Get Users' | translate"
+      [subtitle]="'#LDS#Display All Users' | translate"
+      [image]="'oi-circle'"
+      [identifier]="'get-user'"
+      *ngIf="viewReady && ShowGetUserLink()"
+    >
+      <ng-template #ActionTemplate>
+        <button mat-button color="primary" [attr.data-imx-identifier]="'imx-start-button-get-user'" (click)="GoToGetUser()">
+          <span>{{ '#LDS#GetSomeUsers' | translate }}</span>
+          <eui-icon size="m" icon="forward"></eui-icon>
+        </button>
+      </ng-template>
+    </imx-icon-tile>
+
+
+    <imx-icon-tile
       data-imx-identifier="start-tile-start-a-new-request"
       [caption]="'#LDS#Heading New Request' | translate"
       [subtitle]="'#LDS#Request products for yourself or for others.' | translate"
@@ -136,6 +153,7 @@
         </button>
       </ng-template>
     </imx-icon-tile>
+
     <imx-ext id="Dashboard-MediumTiles"></imx-ext>
   </div>
   <div class="imx-flexible-tile-row">

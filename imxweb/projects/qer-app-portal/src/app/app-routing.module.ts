@@ -30,7 +30,8 @@ import { Routes, RouterModule, ActivatedRouteSnapshot, Router } from '@angular/r
 import { AuthenticationGuardService, LoginComponent, RouteGuardService } from 'qbm';
 import {
   PasswordQueryComponent,
-  StartComponent
+  StartComponent,
+  AddressbookComponent
 } from 'qer';
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -45,6 +46,13 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: StartComponent,
+    canActivate: [RouteGuardService],
+    resolve: [RouteGuardService],
+  },
+
+  {
+    path: 'getuser',
+    component: AddressbookComponent,
     canActivate: [RouteGuardService],
     resolve: [RouteGuardService],
   },

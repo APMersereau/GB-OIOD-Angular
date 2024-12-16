@@ -27,13 +27,14 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserConfig, ProjectConfig, QerProjectConfig } from 'imx-api-qer';
+import { UserConfig, ProjectConfig, QerProjectConfig, PortalPersonAll } from 'imx-api-qer';
 import { UserModelService } from '../../user/user-model.service';
 import { PendingItemsType } from '../../user/pending-items-type.interface';
 import { ProjectConfigurationService } from '../../project-configuration/project-configuration.service';
 import { imx_SessionService, SystemInfoService } from 'qbm';
 import { SystemInfo } from 'imx-api-qbm';
 import { DashboardService } from './dashboard.service';
+import { AddressbookService } from '../../addressbook/addressbook.service';
 
 @Component({
   templateUrl: './start.component.html',
@@ -55,7 +56,8 @@ export class StartComponent implements OnInit {
     private readonly systemInfoService: SystemInfoService,
     private readonly sessionService: imx_SessionService,
     private readonly detectRef: ChangeDetectorRef,
-    private readonly projectConfigurationService: ProjectConfigurationService
+    private readonly projectConfigurationService: ProjectConfigurationService,
+    private addressBookService: AddressbookService
   ) {}
 
   public async ngOnInit(): Promise<void> {
@@ -74,7 +76,7 @@ export class StartComponent implements OnInit {
       busy.endBusy();
     }
   }
-
+  
   public ShowPasswordTile(): boolean {
     return this.userConfig?.ShowPasswordTile;
   }
@@ -97,6 +99,10 @@ export class StartComponent implements OnInit {
 
   public GoToProductSelection(): void {
     this.router.navigate(['newrequest']);
+  }
+
+  public GoToGetUser(): void {
+    this.router.navigate(['getuser']);
   }
 
   public GoToItshopApprovals(): void {
@@ -154,6 +160,10 @@ export class StartComponent implements OnInit {
 
   public ShowPasswordLink(): boolean {
     // TODO (TFS 805999) not(isnullorempty(getconfig('VI_Common_PasswordWebLink')))
+    return true;
+  }
+
+  public ShowGetUserLink(): boolean {
     return true;
   }
 
